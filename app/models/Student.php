@@ -5,6 +5,7 @@ class Student {
     public static function getStudentData(int $studentID, Object $db) {
         $sql = "
             SELECT
+                students.student_id,
                 students.firstname,
                 students.lastname,
                 (
@@ -14,7 +15,10 @@ class Student {
                         grades 
                     WHERE 
                         grades.student_id = students.student_id
-                ) AS avgGrade
+                ) AS avgGrade,
+                (
+                	GROUP_CONCAT(DISTINCT(CONCAT(grades.grade)) SEPARATOR ', ')
+                )  as gradeList
             FROM students 
                 INNER JOIN boards 
                     ON (students.board_id = boards.board_id)

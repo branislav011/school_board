@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("config/dependencies.php");
 
 if (!empty($_GET["student"]) && is_numeric($_GET["student"])) {
@@ -22,7 +22,10 @@ if (!empty($_GET["student"]) && is_numeric($_GET["student"])) {
     $student = StudentInfo::getConfig($studentBoardNum);
     
     $info = $student->getStudentData($studentID, $db);
-    header('Content-Type: application/json');
+
+    // var_dump($info);
+    // exit;
+    header("Content-Type: {$_SESSION["app_type"]}");
     //header('Content-type: application/xml');
     echo $info;
     exit;
