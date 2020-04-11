@@ -8,7 +8,6 @@ if (!empty($_GET["student"]) && is_numeric($_GET["student"])) {
   $studentID = strip_tags(trim($studentID));
 
   if (filter_var($studentID, FILTER_SANITIZE_NUMBER_INT)) {
-    //ready -> set -> go :) ....
     $db = Database::getInstance();
     $studentBoardNum = StudentInfo::getStudentBoardNum($studentID, $db);
 

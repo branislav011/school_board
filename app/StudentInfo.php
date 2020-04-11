@@ -1,14 +1,5 @@
 <?php
-	class StudentInfo {
-		// CONST CF_XML = 1;
-		// CONST CF_DB = 2;
-		// CONST CF_INI = 3;
-		// private static $conf;
-
-		// public function __construct($conf) {
-		// 	$this->conf = $conf;
-		// }
-		
+	class StudentInfo {		
 		public static function getConfig($conf) {
 			switch($conf) {
 				case 1:
@@ -26,8 +17,4 @@
 			return Student::getBoardNum($studentID, $db);
 		}
 	}
-	
-    // $student = Configuration::getConfig(CF_INI);
-    
-    // $info = $student->getInfo();
 ?>

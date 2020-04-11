@@ -1,8 +1,16 @@
 <?php
 
-//JSON
+/**
+ * class StudentCSMB
+ * generate JSON
+ */
 
 class StudentCSM {
+    /**
+     * @param int $studentID
+     * @param Object $db
+     * @return JSON
+     */
     public static function getStudentData(int $studentID, Object $db) {
         $student = new Student();
         $data = $student->getStudentData($studentID, $db);
@@ -19,8 +27,8 @@ class StudentCSM {
 
             $data[$i]["final_result"] = $finalResult;
 
-            var_dump($student);
-            exit;
+            // var_dump($student);
+            // exit;
         }
 
         return json_encode($data);

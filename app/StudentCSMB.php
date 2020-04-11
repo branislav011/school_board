@@ -1,14 +1,28 @@
 <?php
 
-//XML
+/**
+ * class StudentCSMB
+ * generate XML
+ */
 
 class StudentCSMB {
+    /**
+     * @param int $studentID
+     * @param Object $db
+     * @return XML
+     */
+
     public static function getStudentData(int $studentID, Object $db) {
         $student = new Student();
         $data = $student->getStudentData($studentID, $db);
 
         return self::generateXML($data);
     }
+
+    /**
+     * @param int $studentID
+     * @param Array $data
+     */
 
     private static function generateXML($data) {
         $xmlOutput = new SimpleXMLElement("<xml/>");

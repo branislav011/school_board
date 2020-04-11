@@ -1,7 +1,18 @@
 <?php
 
-//average grade, passd or failed, info
+/**
+ * class Student
+ * Model
+ */
+
 class Student {
+    /**
+     * @param int $studentID
+     * @param Object $db
+     * @return Array 
+     * fetch student info
+     */
+
     public static function getStudentData(int $studentID, Object $db) {
         $sql = "
             SELECT
@@ -34,10 +45,19 @@ class Student {
         $stmt->execute([
             ":studentID" => $studentID,
         ]);
-        $records = $stmt->fetchAll();
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return $records;
     }
+
+    /**
+     * @param int $studentID
+     * @param Object $db
+     * @return Array
+     * fetch board num (1 or 2)
+     * 1 - CSM
+     * 2 - CSMB
+     */
 
     public static function getBoardNum(int $studentID, Object $db) {
         $sql = "
